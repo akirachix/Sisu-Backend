@@ -37,6 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api',
+    'assessment',
+    'facilitator',
+    'kicd',
+    'markingScheme',
+    'module',
+    'teacher',
+    'users',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +131,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+
+AUTH_USER_MODEL = 'users.User'  # This should point to the custom User model
