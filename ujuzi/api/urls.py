@@ -15,11 +15,15 @@ from .views import KicdListView
 
 from .views import UserListView, UserDetailView, RegisterView, LoginUser
 
+from rest_framework_simplejwt import views as jwt_views
+
 
 urlpatterns = [
 path('users/', UserListView.as_view(), name='user-list'), 
 path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'), 
 path('register/', RegisterView.as_view(), name='register'),  # Endpoint for user registration
+path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 path('users/', UserListView.as_view(), name='all_users'),
 path('user/login/', LoginUser.as_view(), name='login'), 
 path("teacher/",TeacherListView.as_view(),name="teacher_list_view"),

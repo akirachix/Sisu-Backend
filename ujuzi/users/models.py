@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.timezone import now
@@ -83,4 +84,7 @@ class Login(models.Model):
 
     class Meta:
         db_table = 'users_login'  # Explicitly set the table name
+
+
+
 

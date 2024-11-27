@@ -2,6 +2,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import Group, Permission
 from django.contrib.auth import get_user_model
+        from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
+
 
 User = get_user_model()
 
@@ -71,7 +73,8 @@ def assign_user_permissions(sender, instance, created, **kwargs):
             default_permissions = Permission.objects.filter(codename="view_portal")
             instance.user_permissions.set(default_permissions)
         
-        instance.save()from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
+        instance.save()
+        # from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 
 class IsAuthenticatedAndHasPermission(BasePermission):
     def has_permission(self, request, view):

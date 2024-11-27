@@ -1,58 +1,62 @@
-from teacher.models import Teacher
 from rest_framework import serializers
 from markingScheme.models import MarkingScheme
 from assessment.models import Assessment
 from module.models import Module
 from facilitator.models import Facilitator
 from kicd.models import Kicd
-from rest_framework import serializers
-from users.models import User
+from teacher.models import Teacher
+from users.models import User  # Correct import statement
 
-
+# Teacher Serializer
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
         fields = "__all__"
 
 
+# Marking Scheme Serializer
 class MarkingSchemeSerializer(serializers.ModelSerializer):
     class Meta:
         model = MarkingScheme
         fields = "__all__"
 
 
+# Assessment Serializer
 class AssessmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Assessment
         fields = "__all__"
 
 
+# KICD Serializer
 class KicdSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kicd
         fields = "__all__"
 
 
+# Module Serializer
 class ModuleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Module
         fields = "__all__"
 
 
-
+# Facilitator Serializer
 class FacilitatorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Facilitator
         fields = "__all__"
+
+
+# User Serializer (Corrected indentation)
 class UserSerializer(serializers.ModelSerializer):
-   
- class Meta:
+    class Meta:
         model = User
         fields = ['first_name', 'last_name', 'password', 'email', 'role']
 
 
-
-
+# Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -70,15 +74,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-    
-# class LoginSerializer(serializers.Serializer):
-#     email = serializers.EmailField(required=True)
-#     password = serializers.CharField(required=True)
-
-    
 
 
-
+# Login Serializer
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
